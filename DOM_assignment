@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fundamentals Mastery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 1.5rem;
+        }
+
+        .part {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.5rem;
+            margin: 0 1rem 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .part h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #4a6491;
+        }
+
+        .demo-box {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .demo-box h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            background: linear-gradient(135deg, #2c3e50 0%, #4a6491 100%);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        input,
+        select {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #4a6491;
+            box-shadow: 0 0 0 3px rgba(74, 100, 145, 0.2);
+        }
+
+        .output {
+            background: #e8f4f8;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            min-height: 50px;
+        }
+
+        .user-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .user-list li {
+            padding: 0.8rem;
+            background: white;
+            margin-bottom: 0.5rem;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-list button {
+            padding: 0.4rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #2c3e50;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+
+            .part {
+                margin: 0 0 1.5rem 0;
+            }
+        }
+
+        .highlight {
+            background-color: yellow;
+            transition: background-color 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Fundamentals Mastery</h1>
+            <p>Exploring Variables, Functions, Loops, and DOM Manipulation</p>
+        </header>
+
+        <div class="content">
+            <!-- Part 1: JavaScript Basics -->
+            <section class="part">
+                <h2>Part 1: JavaScript Basics</h2>
+
+                <div class="demo-box">
+                    <h3>Variable Declaration & Data Types</h3>
+                    <button onclick="showDataTypes()">Show Data Types</button>
+                    <div class="output" id="dataTypesOutput"></div>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Conditional Logic</h3>
+                    <p>Enter your age:</p>
+                    <input type="number" id="ageInput" placeholder="Enter your age">
+                    <button onclick="checkAge()">Check Eligibility</button>
+                    <div class="output" id="ageOutput"></div>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Simple Calculator</h3>
+                    <input type="number" id="num1" placeholder="First number">
+                    <input type="number" id="num2" placeholder="Second number">
+                    <select id="operation">
+                        <option value="add">Add</option>
+                        <option value="subtract">Subtract</option>
+                        <option value="multiply">Multiply</option>
+                        <option value="divide">Divide</option>
+                    </select>
+                    <button onclick="calculate()">Calculate</button>
+                    <div class="output" id="calcOutput"></div>
+                </div>
+            </section>
+
+            <!-- Part 2: JavaScript Functions -->
+            <section class="part">
+                <h2>Part 2: JavaScript Functions</h2>
+
+                <div class="demo-box">
+                    <h3>String Formatter</h3>
+                    <input type="text" id="formatInput" placeholder="Enter text to format">
+                    <button onclick="formatText('upper')">UPPERCASE</button>
+                    <button onclick="formatText('lower')">lowercase</button>
+                    <button onclick="formatText('capitalize')">Capitalize</button>
+                    <div class="output" id="formatOutput"></div>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Tax Calculator</h3>
+                    <input type="number" id="salaryInput" placeholder="Enter your salary">
+                    <button onclick="calculateTax()">Calculate Tax</button>
+                    <div class="output" id="taxOutput"></div>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Number Utilities</h3>
+                    <input type="number" id="numberInput" placeholder="Enter a number">
+                    <button onclick="checkNumber('even')">Is Even?</button>
+                    <button onclick="checkNumber('prime')">Is Prime?</button>
+                    <button onclick="checkNumber('positive')">Is Positive?</button>
+                    <div class="output" id="numberOutput"></div>
+                </div>
+            </section>
+        </div>
+
+        <div class="content">
+            <!-- Part 3: JavaScript Loops -->
+            <section class="part">
+                <h2>Part 3: JavaScript Loops</h2>
+
+                <div class="demo-box">
+                    <h3>Multiplication Table</h3>
+                    <input type="number" id="tableNumber" placeholder="Enter a number" value="5">
+                    <button onclick="generateTable()">Generate Table</button>
+                    <div class="output" id="tableOutput"></div>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Array Iteration</h3>
+                    <button onclick="iterateArray()">Iterate Sample Array</button>
+                    <div class="output" id="arrayOutput"></div>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Countdown Timer</h3>
+                    <input type="number" id="countdownInput" placeholder="Seconds" value="10">
+                    <button onclick="startCountdown()">Start Countdown</button>
+                    <div class="output" id="countdownOutput"></div>
+                </div>
+            </section>
+
+            <!-- Part 4: DOM Manipulation -->
+            <section class="part">
+                <h2>Part 4: DOM Manipulation</h2>
+
+                <div class="demo-box">
+                    <h3>Dynamic List</h3>
+                    <input type="text" id="userInput" placeholder="Enter a name">
+                    <button onclick="addToList()">Add to List</button>
+                    <ul class="user-list" id="userList">
+                        <li>John <button onclick="removeItem(this)">Remove</button></li>
+                        <li>Sarah <button onclick="removeItem(this)">Remove</button></li>
+                    </ul>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Theme Switcher</h3>
+                    <button onclick="switchTheme('light')">Light Theme</button>
+                    <button onclick="switchTheme('dark')">Dark Theme</button>
+                    <button onclick="switchTheme('blue')">Blue Theme</button>
+                </div>
+
+                <div class="demo-box">
+                    <h3>Element Styler</h3>
+                    <p id="styleText">This text will be styled dynamically</p>
+                    <button onclick="changeStyle('color', 'red')">Red Text</button>
+                    <button onclick="changeStyle('fontSize', '24px')">Big Text</button>
+                    <button onclick="changeStyle('backgroundColor', 'yellow')">Highlight</button>
+                    <button onclick="changeStyle('reset')">Reset Style</button>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>JavaScript Fundamentals Mastery &copy; 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        // Part 1: JavaScript Basics
+
+        // Variable declarations and data types
+        function showDataTypes() {
+            // Different data types
+            const stringVar = "Hello, World!";
+            const numberVar = 42;
+            const booleanVar = true;
+            const arrayVar = [1, 2, 3, 4, 5];
+            const objectVar = { name: "John", age: 30 };
+            const nullVar = null;
+            let undefinedVar;
+
+            // Display the data types
+            const output = `
+                <p>String: ${stringVar} (${typeof stringVar})</p>
+                <p>Number: ${numberVar} (${typeof numberVar})</p>
+                <p>Boolean: ${booleanVar} (${typeof booleanVar})</p>
+                <p>Array: [${arrayVar}] (${typeof arrayVar})</p>
+                <p>Object: ${JSON.stringify(objectVar)} (${typeof objectVar})</p>
+                <p>Null: ${nullVar} (${typeof nullVar})</p>
+                <p>Undefined: ${undefinedVar} (${typeof undefinedVar})</p>
+            `;
+
+            document.getElementById('dataTypesOutput').innerHTML = output;
+        }
+
+        // Conditional logic example
+        function checkAge() {
+            const age = document.getElementById('ageInput').value;
+            let message;
+
+            if (age >= 18) {
+                message = "You are eligible to vote!";
+            } else if (age >= 13) {
+                message = "You are a teenager.";
+            } else if (age > 0) {
+                message = "You are a child.";
+            } else {
+                message = "Please enter a valid age.";
+            }
+
+            document.getElementById('ageOutput').textContent = message;
+        }
+
+        // Simple calculator
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Please enter valid numbers!";
+            } else {
+                switch (operation) {
+                    case 'add':
+                        result = `${num1} + ${num2} = ${num1 + num2}`;
+                        break;
+                    case 'subtract':
+                        result = `${num1} - ${num2} = ${num1 - num2}`;
+                        break;
+                    case 'multiply':
+                        result = `${num1} × ${num2} = ${num1 * num2}`;
+                        break;
+                    case 'divide':
+                        result = num2 !== 0 ?
+                            `${num1} ÷ ${num2} = ${num1 / num2}` :
+                            "Cannot divide by zero!";
+                        break;
+                    default:
+                        result = "Invalid operation!";
+                }
+            }
+
+            document.getElementById('calcOutput').textContent = result;
+        }
+
+        // Part 2: JavaScript Functions
+
+        // String formatting functions
+        function formatText(formatType) {
+            const inputText = document.getElementById('formatInput').value;
+            let formattedText;
+
+            switch (formatType) {
+                case 'upper':
+                    formattedText = inputText.toUpperCase();
+                    break;
+                case 'lower':
+                    formattedText = inputText.toLowerCase();
+                    break;
+                case 'capitalize':
+                    formattedText = inputText.charAt(0).toUpperCase() +
+                        inputText.slice(1).toLowerCase();
+                    break;
+                default:
+                    formattedText = "Invalid format type!";
+            }
+
+            document.getElementById('formatOutput').textContent = formattedText;
+        }
+
+        // Tax calculation function
+        function calculateTax() {
+            const salary = parseFloat(document.getElementById('salaryInput').value);
+
+            if (isNaN(salary) || salary < 0) {
+                document.getElementById('taxOutput').textContent = "Please enter a valid salary!";
+                return;
+            }
+
+            let taxRate;
+            if (salary <= 10000) {
+                taxRate = 0.1;
+            } else if (salary <= 50000) {
+                taxRate = 0.2;
+            } else {
+                taxRate = 0.3;
+            }
+
+            const taxAmount = salary * taxRate;
+            const netSalary = salary - taxAmount;
+
+            const result = `
+                Gross Salary: $${salary.toFixed(2)}<br>
+                Tax Rate: ${(taxRate * 100)}%<br>
+                Tax Amount: $${taxAmount.toFixed(2)}<br>
+                Net Salary: $${netSalary.toFixed(2)}
+            `;
+
+            document.getElementById('taxOutput').innerHTML = result;
+        }
+
+        // Number utility functions
+        function checkNumber(checkType) {
+            const number = parseFloat(document.getElementById('numberInput').value);
+            let result;
+
+            if (isNaN(number)) {
+                result = "Please enter a valid number!";
+            } else {
+                switch (checkType) {
+                    case 'even':
+                        result = `${number} is ${number % 2 === 0 ? 'even' : 'odd'}`;
+                        break;
+                    case 'prime':
+                        result = isPrime(number) ?
+                            `${number} is a prime number` :
+                            `${number} is not a prime number`;
+                        break;
+                    case 'positive':
+                        result = `${number} is ${number >= 0 ? 'positive' : 'negative'}`;
+                        break;
+                    default:
+                        result = "Invalid check type!";
+                }
+            }
+
+            document.getElementById('numberOutput').textContent = result;
+        }
+
+        // Helper function to check if a number is prime
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num === 2) return true;
+            if (num % 2 === 0) return false;
+
+            for (let i = 3; i <= Math.sqrt(num); i += 2) {
+                if (num % i === 0) return false;
+            }
+
+            return true;
+        }
+
+        // Part 3: JavaScript Loops
+
+        // Multiplication table using for loop
+        function generateTable() {
+            const number = parseInt(document.getElementById('tableNumber').value);
+            let tableHTML = `<h4>Multiplication Table for ${number}</h4>`;
+
+            for (let i = 1; i <= 10; i++) {
+                tableHTML += `<p>${number} × ${i} = ${number * i}</p>`;
+            }
+
+            document.getElementById('tableOutput').innerHTML = tableHTML;
+        }
+
+        // Array iteration using forEach
+        function iterateArray() {
+            const fruits = ["Apple", "Banana", "Orange", "Grapes", "Mango"];
+            let outputHTML = "<h4>Fruits List</h4><ul>";
+
+            fruits.forEach((fruit, index) => {
+                outputHTML += `<li>Fruit ${index + 1}: ${fruit}</li>`;
+            });
+
+            outputHTML += "</ul>";
+            document.getElementById('arrayOutput').innerHTML = outputHTML;
+        }
+
+        // Countdown timer using while loop
+        function startCountdown() {
+            let seconds = parseInt(document.getElementById('countdownInput').value);
+            const countdownOutput = document.getElementById('countdownOutput');
+
+            if (isNaN(seconds) || seconds <= 0) {
+                countdownOutput.textContent = "Please enter a valid number of seconds!";
+                return;
+            }
+
+            countdownOutput.textContent = `Countdown: ${seconds}`;
+
+            const countdownInterval = setInterval(() => {
+                seconds--;
+
+                if (seconds >= 0) {
+                    countdownOutput.textContent = `Countdown: ${seconds}`;
+                } else {
+                    clearInterval(countdownInterval);
+                    countdownOutput.textContent = "Countdown finished!";
+                }
+            }, 1000);
+        }
+
+        // Part 4: DOM Manipulation
+
+        // Add items to list
+        function addToList() {
+            const userInput = document.getElementById('userInput');
+            const userList = document.getElementById('userList');
+
+            if (userInput.value.trim() !== "") {
+                const newItem = document.createElement('li');
+                newItem.innerHTML = `
+                    ${userInput.value}
+                    <button onclick="removeItem(this)">Remove</button>
+                `;
+                userList.appendChild(newItem);
+                userInput.value = "";
+            }
+        }
+
+        // Remove items from list
+        function removeItem(button) {
+            const listItem = button.parentElement;
+            listItem.parentElement.removeChild(listItem);
+        }
+
+        // Theme switcher
+        function switchTheme(theme) {
+            const body = document.body;
+
+            // Remove any existing theme classes
+            body.classList.remove('light-theme', 'dark-theme', 'blue-theme');
+
+            // Apply the selected theme
+            switch (theme) {
+                case 'light':
+                    body.style.backgroundColor = '#f5f7fa';
+                    body.style.color = '#333';
+                    break;
+                case 'dark':
+                    body.style.backgroundColor = '#333';
+                    body.style.color = '#f5f7fa';
+                    break;
+                case 'blue':
+                    body.style.backgroundColor = '#e0f0ff';
+                    body.style.color = '#004080';
+                    break;
+            }
+        }
+
+        // Change element style
+        function changeStyle(property, value) {
+            const styleText = document.getElementById('styleText');
+
+            if (property === 'reset') {
+                styleText.removeAttribute('style');
+            } else {
+                styleText.style[property] = value;
+            }
+
+            // Add highlight effect
+            styleText.classList.add('highlight');
+            setTimeout(() => {
+                styleText.classList.remove('highlight');
+            }, 500);
+        }
+    </script>
+</body>
+
+</html>
